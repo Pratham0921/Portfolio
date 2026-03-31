@@ -133,61 +133,51 @@ export const portfolioData = {
   },
 }
 
-// ─── Landmark definitions (3D world zones → portfolio sections) ───
-export const LANDMARKS = [
+// ─── Landmark definitions (2D Map Zones → portfolio sections) ───
+export const MAP_ZONES = [
   {
     id: 'projects',
-    label: 'Crystal Spire',
+    label: 'The Gloomwood',
     subtitle: 'Projects',
     icon: '💎',
-    position: [-16, 0, -12],
-    cameraPos: [-16, 10, -2],
-    cameraTarget: [-16, 2, -12],
+    x: 30, // % from left
+    y: 35, // % from top
     color: '#06b6d4',
-    glowColor: '#0ea5e9',
   },
   {
     id: 'about',
-    label: 'Ironhold Keep',
+    label: 'The Frostpeaks',
     subtitle: 'About Me',
     icon: '🏰',
-    position: [14, 0, -14],
-    cameraPos: [14, 9, -4],
-    cameraTarget: [14, 2, -14],
+    x: 70,
+    y: 25,
     color: '#94a3b8',
-    glowColor: '#64748b',
   },
   {
     id: 'experience',
-    label: 'The Hearthstone',
+    label: 'Tavern Village',
     subtitle: 'Experience',
     icon: '🍺',
-    position: [0, 0, 14],
-    cameraPos: [0, 8, 23],
-    cameraTarget: [0, 2, 14],
+    x: 75,
+    y: 50,
     color: '#f59e0b',
-    glowColor: '#d97706',
   },
   {
     id: 'skills',
-    label: 'Frostpeak Summit',
+    label: 'Serpent\'s Swamp',
     subtitle: 'Skills',
     icon: '⛰️',
-    position: [-18, 0, 10],
-    cameraPos: [-18, 14, 20],
-    cameraTarget: [-18, 4, 10],
+    x: 25,
+    y: 75,
     color: '#e2e8f0',
-    glowColor: '#cbd5e1',
   },
   {
     id: 'contact',
     label: 'Starfall Harbor',
     subtitle: 'Contact',
     icon: '⚓',
-    position: [18, 0, 10],
-    cameraPos: [18, 8, 20],
-    cameraTarget: [18, 1, 10],
+    x: 75,
+    y: 80,
     color: '#818cf8',
-    glowColor: '#6366f1',
   },
 ]

@@ -1,4 +1,4 @@
-import { LANDMARKS } from '../data/portfolio'
+import { MAP_ZONES } from '../data/portfolio'
 
 const NAV_ICONS = {
   projects: '💎', about: '🏰', experience: '🍺', skills: '⛰️', contact: '⚓',
@@ -6,7 +6,7 @@ const NAV_ICONS = {
 
 /**
  * Fixed top navigation bar.
- * Clicking a section link triggers the GSAP camera fly-to in the 3D world.
+ * Clicking a section link triggers opening the corresponding UI panel.
  */
 export default function Navbar({ onNavClick, activeSection, isNight, onToggleNight, onResetCamera }) {
   return (
@@ -31,7 +31,7 @@ export default function Navbar({ onNavClick, activeSection, isNight, onToggleNig
 
       {/* Nav links */}
       <nav className="hidden md:flex items-center gap-7">
-        {LANDMARKS.map(lm => (
+        {MAP_ZONES.map(lm => (
           <button
             key={lm.id}
             onClick={() => onNavClick(lm.id)}
