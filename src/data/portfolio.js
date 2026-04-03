@@ -2,39 +2,54 @@
 //  Portfolio content — edit freely!
 // ─────────────────────────────────────────────
 
+// Map zones removed - using simple scroll navigation
+
 export const portfolioData = {
   name: 'Pratham',
   title: 'Game Developer & 3D Experience Creator',
   tagline: 'Crafting Interactive Worlds, One Polygon at a Time',
+  bioPhoto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face', // Placeholder - replace with your photo
 
   projects: [
     {
-      id: 1, emoji: '🏰',
+      id: 1,
+      emoji: '🏰',
       name: 'Echoes of the Forgotten',
       description: 'A dark-fantasy action-RPG in Unreal Engine 5. Procedural dungeons, AI companion system, real-time Lumen lighting, and Niagara VFX throughout.',
       tech: ['Unreal Engine 5', 'C++', 'Blueprints', 'Niagara VFX'],
-      github: 'https://github.com', live: '#',
+      image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&h=600&fit=crop', // Dark fantasy RPG placeholder
+      github: 'https://github.com',
+      live: '#',
     },
     {
-      id: 2, emoji: '🤖',
+      id: 2,
+      emoji: '🤖',
       name: 'NeoGrid Runner',
       description: 'Cyberpunk endless runner with procedurally-generated city blocks, custom HLSL shaders for neon bloom, and 60fps on mobile via instanced rendering.',
       tech: ['Unity', 'C#', 'HLSL Shaders', 'DOTween'],
-      github: 'https://github.com', live: '#',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop', // Cyberpunk city placeholder
+      github: 'https://github.com',
+      live: '#',
     },
     {
-      id: 3, emoji: '🗡️',
+      id: 3,
+      emoji: '🗡️',
       name: 'Pixel Dungeon Crawler',
       description: 'Retro roguelite with 200+ unique items, permadeath, procedural loot, and hand-crafted pixel art. Reached #4 on Itch.io front page.',
       tech: ['Godot 4', 'GDScript', 'Aseprite', 'Tiled'],
-      github: 'https://github.com', live: '#',
+      image: 'https://images.unsplash.com/photo-1589254465871-4c0da35d3d1d?w=800&h=600&fit=crop', // Pixel art dungeon placeholder
+      github: 'https://github.com',
+      live: '#',
     },
     {
-      id: 4, emoji: '✨',
+      id: 4,
+      emoji: '✨',
       name: 'ShaderLab VFX Kit',
       description: '40+ production-ready GLSL/HLSL shaders and VFX systems — water, fire, magic portals, and dissolve effects for game developers.',
       tech: ['GLSL', 'Three.js', 'WebGL', 'React'],
-      github: 'https://github.com', live: '#',
+      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop', // VFX shader placeholder
+      github: 'https://github.com',
+      live: '#',
     },
   ],
 
@@ -133,41 +148,4 @@ export const portfolioData = {
   },
 }
 
-// ─── Landmark definitions (2D Map Zones → portfolio sections) ───
-export const MAP_ZONES = [
-  {
-    id: 'projects',
-    label: 'The Gloomwood',
-    subtitle: 'Projects',
-    icon: '🌲',
-    color: '#22c55e',
-  },
-  {
-    id: 'about',
-    label: 'The Frostpeaks',
-    subtitle: 'About',
-    icon: '🏰',
-    color: '#94a3b8',
-  },
-  {
-    id: 'experience',
-    label: 'Hearthstone Village',
-    subtitle: 'Experience',
-    icon: '🍺',
-    color: '#f59e0b',
-  },
-  {
-    id: 'skills',
-    label: "Serpent's Shore",
-    subtitle: 'Skills',
-    icon: '⛰️',
-    color: '#60a5fa',
-  },
-  {
-    id: 'contact',
-    label: 'Starfall Harbor',
-    subtitle: 'Contact',
-    icon: '⚓',
-    color: '#a78bfa',
-  },
-]
+// No longer using map zones - using direct scroll navigation
