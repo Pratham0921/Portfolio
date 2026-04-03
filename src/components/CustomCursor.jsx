@@ -79,13 +79,12 @@ export default function CustomCursor() {
       ref={cursorRef}
       className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
       style={{
-        width: '24px',
-        height: '24px',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 40%, transparent 70%)',
+        width: '16px',
+        height: '16px',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 60%, transparent 100%)',
         borderRadius: '50%',
-        border: '1px solid rgba(255,255,255,0.3)',
-        boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
-        transition: 'scale 0.1s ease-out',
+        border: '1px solid rgba(255,255,255,0.2)',
+        transition: 'transform 0.15s ease-out, width 0.2s, height 0.2s',
         willChange: 'transform',
       }}
     />

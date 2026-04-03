@@ -21,7 +21,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -30,43 +30,14 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #60a5fa, #a78bfa);
 }
 
-/* Noise texture overlay */
-.bg-noise {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.03;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Grid background pattern */
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-
-/* Glassmorphism utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
+/* Glassmorphism */
 .glass-card {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
@@ -84,52 +55,31 @@ body {
               0 0 40px rgba(59, 130, 246, 0.1);
 }
 
-/* Glowing border effect */
-.glow-border {
-  position: relative;
-}
-
-.glow-border::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s;
-  filter: blur(8px);
-}
-
-.glow-border:hover::before {
-  opacity: 0.7;
-}
-
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Animated gradient border for buttons */
+/* Gradient button */
 .btn-gradient {
   position: relative;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #f97316, #ec4899);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  transition: all 0.3s;
   overflow: hidden;
+  transition: all 0.3s;
 }
 
 .btn-gradient::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  background: linear-gradient(135deg, #ec4899, #a855f7);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -143,44 +93,22 @@ body {
   z-index: 1;
 }
 
-/* Skill bar animation */
-.skill-bar-fill {
+/* Skill bar */
+.skill-bar {
+  height: 6px;
+  background: #333;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #ec4899);
+  border-radius: 999px;
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Fade in up animation */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger children animations */
-.stagger-children > * {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: stagger-in 0.5s ease forwards;
-}
-
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes stagger-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Section header with animated underline */
+/* Section header underline animation */
 .section-header {
   position: relative;
   display: inline-block;
@@ -193,7 +121,7 @@ body {
   left: 0;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, #f97316, #ec4899);
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -201,72 +129,18 @@ body {
   width: 100%;
 }
 
-/* Pulse glow animation for highlights */
-.pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+/* Content width container */
+.content-width {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-  }
-}
-
-/* Magnetic button effect container */
-.magnetic-btn {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Floating orbs for background */
-.floating-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  animation: float-orb 20s ease-in-out infinite;
-}
-
-@keyframes float-orb {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -30px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-/* Typography helpers */
-.heading-gradient {
-  background: linear-gradient(to right, #fff 0%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Content width */
-@layer utilities {
-  .content-width {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
   .glass-card {
     border-radius: 0.75rem;
-  }
-
-  .floating-orb {
-    opacity: 0.3;
   }
 }

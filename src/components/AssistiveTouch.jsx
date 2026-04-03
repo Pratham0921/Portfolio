@@ -30,7 +30,7 @@ export default function AssistiveTouch() {
             {/* Quick Bio Card */}
             <div className="text-center">
               {portfolioData.bioPhoto && (
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-blue-500/50">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-amber-500/50">
                   <img
                     src={portfolioData.bioPhoto}
                     alt={portfolioData.name}
@@ -39,7 +39,7 @@ export default function AssistiveTouch() {
                 </div>
               )}
               <h4 className="text-lg font-bold text-white mb-1">{portfolioData.name}</h4>
-              <p className="text-blue-400 text-sm font-mono mb-4">{portfolioData.title}</p>
+              <p className="text-amber-400 text-sm font-mono mb-4">{portfolioData.title}</p>
               <p className="text-slate-400 text-sm mb-4 line-clamp-3">
                 {portfolioData.about.bio}
               </p>
@@ -59,7 +59,7 @@ export default function AssistiveTouch() {
               </div>
               <a
                 href={`mailto:${portfolioData.contact.email}`}
-                className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                className="text-sm text-amber-400 hover:text-amber-300 transition-colors"
               >
                 {portfolioData.contact.email}
               </a>
@@ -74,7 +74,7 @@ export default function AssistiveTouch() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="assistive-touch-btn w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white shadow-lg hover:shadow-purple-500/50 transition-all"
+        className="assistive-touch-btn w-14 h-14 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-lg hover:shadow-rose-500/50 transition-all"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={isOpen ? { rotate: 45 } : { rotate: 0 }}

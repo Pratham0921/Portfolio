@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import ParticleBackground from './components/ParticleBackground'
+import EnhancedBackground from './components/EnhancedBackground'
 import GlassCard from './components/GlassCard'
 import MotionSection from './components/MotionSection'
 import SkillBar from './components/SkillBar'
@@ -62,11 +62,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Grid background */}
-      <div className="bg-grid" />
-
-      {/* Particle Background */}
-      <ParticleBackground />
+      {/* Enhanced Background */}
+      <EnhancedBackground />
 
       {/* Custom Cursor */}
       <CustomCursor />
@@ -120,7 +117,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8 }}
-            className="hidden md:inline-block px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 relative overflow-hidden group"
+            className="hidden md:inline-block px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 relative overflow-hidden group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -152,17 +149,17 @@ export default function App() {
             <motion.div
               animate={{ y: [0, -30, 0], x: [0, 10, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
+              className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"
             />
             <motion.div
               animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
               transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl"
             />
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
               transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+              className="absolute top-1/2 left-1/2 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
             />
           </motion.div>
 
@@ -176,7 +173,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-blue-400 font-mono text-sm md:text-base tracking-[0.2em] uppercase mb-6"
+                className="text-amber-400 font-mono text-sm md:text-base tracking-[0.2em] uppercase mb-6"
               >
                 {portfolioData.title}
               </motion.p>
@@ -219,7 +216,7 @@ export default function App() {
               </motion.button>
               <motion.button
                 onClick={() => scrollTo('contact')}
-                className="px-8 py-4 border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white rounded-full transition-all duration-300 hover:bg-white/5 hover:shadow-lg hover:shadow-blue-500/10 backdrop-blur-sm"
+                className="px-8 py-4 border border-slate-600 hover:border-amber-500 text-slate-300 hover:text-white rounded-full transition-all duration-300 hover:bg-white/5 hover:shadow-lg hover:shadow-amber-500/10 backdrop-blur-sm"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -229,27 +226,6 @@ export default function App() {
           </div>
 
           {/* Enhanced scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-              className="flex flex-col items-center gap-2 text-slate-500 text-xs tracking-widest"
-            >
-              <span>SCROLL</span>
-              <div className="w-5 h-8 border-2 border-slate-600 rounded-full flex justify-center pt-1.5">
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-                  className="w-1 h-2 bg-blue-400 rounded-full"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
         </section>
 
         {/* About Section */}
@@ -292,7 +268,7 @@ export default function App() {
                       </div>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-1">{portfolioData.name}</h3>
-                    <p className="text-blue-400 text-sm font-mono mb-4">{portfolioData.title}</p>
+                    <p className="text-amber-400 text-sm font-mono mb-4">{portfolioData.title}</p>
                     <div className="flex justify-center gap-3 text-sm text-slate-400">
                       {portfolioData.contact.socials.slice(0, 3).map((social) => (
                         <a
@@ -312,7 +288,7 @@ export default function App() {
 
                 <GlassCard className="p-6">
                   <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-3">
-                    <span className="text-2xl text-blue-400">{'</>'}</span>
+                    <span className="text-2xl text-amber-400">{'</>'}</span>
                     Quick Stats
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -323,9 +299,9 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-blue-500/30 transition-all duration-300 group"
+                        className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-amber-500/30 transition-all duration-300 group"
                       >
-                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2 group-hover:text-blue-400 transition-colors">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2 group-hover:text-amber-400 transition-colors">
                           {stat.label}
                         </p>
                         <p className="text-2xl font-bold text-white">{stat.value}</p>
@@ -336,7 +312,7 @@ export default function App() {
 
                 <GlassCard className="p-6">
                   <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-3">
-                    <span className="text-2xl text-purple-400">⚡</span>
+                    <span className="text-2xl text-rose-400">⚡</span>
                     Core Skills
                   </h3>
                   <div className="space-y-4">
@@ -389,15 +365,15 @@ export default function App() {
 
                   <GlassCard hover className="p-6 md:p-8 ml-4">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="px-4 py-1.5 text-xs font-mono font-semibold text-blue-300 bg-blue-500/20 rounded-full border border-blue-500/30">
+                      <span className="px-4 py-1.5 text-xs font-mono font-semibold text-amber-300 bg-amber-500/20 rounded-full border border-amber-500/30">
                         {exp.period}
                       </span>
                       <span
                         className={`px-4 py-1.5 text-xs font-semibold rounded-full border ${
                           exp.type === 'EPIC QUEST'
-                            ? 'text-purple-300 bg-purple-500/20 border-purple-500/30'
+                            ? 'text-rose-300 bg-rose-500/20 border-rose-500/30'
                             : exp.type === 'MAIN QUEST'
-                            ? 'text-cyan-300 bg-cyan-500/20 border-cyan-500/30'
+                            ? 'text-cyan-300 bg-violet-500/20 border-cyan-500/30'
                             : 'text-emerald-300 bg-emerald-500/20 border-emerald-500/30'
                         }`}
                       >
@@ -427,7 +403,7 @@ export default function App() {
                           transition={{ delay: j * 0.1 }}
                           className="flex items-start gap-3 text-slate-400 group"
                         >
-                          <span className="text-purple-400 mt-0.5 transition-transform group-hover:translate-x-1">→</span>
+                          <span className="text-rose-400 mt-0.5 transition-transform group-hover:translate-x-1">→</span>
                           <span>{a}</span>
                         </motion.li>
                       ))}
@@ -507,7 +483,7 @@ export default function App() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: j * 0.05 }}
-                            className="px-3 py-1.5 text-xs font-mono bg-blue-500/10 text-blue-300 rounded-lg border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+                            className="px-3 py-1.5 text-xs font-mono bg-amber-500/10 text-amber-300 rounded-lg border border-blue-500/20 hover:bg-amber-500/20 transition-colors"
                           >
                             {tech}
                           </motion.span>
@@ -529,7 +505,7 @@ export default function App() {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium flex items-center gap-2 group"
+                          className="text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium flex items-center gap-2 group"
                           whileHover={{ x: 4 }}
                         >
                           <span className="text-lg">🚀</span>
@@ -611,7 +587,7 @@ export default function App() {
                       </h3>
                       <a
                         href={`mailto:${portfolioData.contact.email}`}
-                        className="text-2xl md:text-3xl font-semibold text-white hover:text-blue-400 transition-colors block"
+                        className="text-2xl md:text-3xl font-semibold text-white hover:text-amber-400 transition-colors block"
                       >
                         {portfolioData.contact.email}
                       </a>
@@ -661,7 +637,7 @@ export default function App() {
                       <input
                         type="text"
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
                         placeholder="Your name"
                       />
                     </div>
@@ -670,7 +646,7 @@ export default function App() {
                       <input
                         type="email"
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -679,13 +655,13 @@ export default function App() {
                       <textarea
                         rows={4}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all resize-none"
                         placeholder="Tell me about your project..."
                       />
                     </div>
                     <motion.button
                       type="submit"
-                      className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
+                      className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
