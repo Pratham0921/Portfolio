@@ -1,7 +1,7 @@
 {
   "name": "rpg-portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "framer-motion": "^11.3.28",
-    "gsap": "^3.12.5",
-    "lucide-react": "^0.428.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-zoom-pan-pinch": "^3.6.1"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
