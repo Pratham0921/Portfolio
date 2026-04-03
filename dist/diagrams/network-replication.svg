@@ -1,0 +1,81 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b8cc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)" />
+  <text x="400" y="50" text-anchor="middle" fill="#00d4ff" font-family="Fira Code, monospace" font-size="20">Network Replication Map</text>
+
+  <!-- Server -->
+  <rect x="350" y="30" width="100" height="50" fill="none" stroke="#00d4ff" stroke-width="2" rx="4" />
+  <text x="400" y="57" text-anchor="middle" fill="#00d4ff" font-family="Fira Code, monospace" font-size="14" font-weight="bold">DEDICATED</text>
+  <text x="400" y="72" text-anchor="middle" fill="#00d4ff" font-family="Fira Code, monospace" font-size="12">SERVER</text>
+
+  <!-- Clients -->
+  <rect x="50" y="150" width="100" height="50" fill="none" stroke="#00d4ff" stroke-width="1" rx="4" />
+  <text x="100" y="177" text-anchor="middle" fill="#e0e0e0" font-family="Fira Code, monospace" font-size="12">Client 1</text>
+
+  <rect x="250" y="150" width="100" height="50" fill="none" stroke="#00d4ff" stroke-width="1" rx="4" />
+  <text x="300" y="177" text-anchor="middle" fill="#e0e0e0" font-family="Fira Code, monospace" font-size="12">Client 2</text>
+
+  <rect x="450" y="150" width="100" height="50" fill="none" stroke="#00d4ff" stroke-width="1" rx="4" />
+  <text x="500" y="177" text-anchor="middle" fill="#e0e0e0" font-family="Fira Code, monospace" font-size="12">Client 3</text>
+
+  <rect x="650" y="150" width="100" height="50" fill="none" stroke="#00d4ff" stroke-width="1" rx="4" />
+  <text x="700" y="177" text-anchor="middle" fill="#e0e0e0" font-family="Fira Code, monospace" font-size="12">Client N</text>
+
+  <!-- Authority -->
+  <g transform="translate(100, 250)">
+    <rect x="0" y="0" width="600" height="80" fill="rgba(0, 212, 255, 0.1)" stroke="none" rx="8" />
+    <text x="300" y="30" text-anchor="middle" fill="#00d4ff" font-family="Fira Code, monospace" font-size="12">AUTHORITATIVE SERVER</text>
+    <text x="300" y="50" text-anchor="middle" fill="#a0a0a0" font-family="Fira Code, monospace" font-size="10">
+      All gameplay logic validated server-side
+    </text>
+  </g>
+
+  <!-- Connections -->
+  <g stroke="#00d4ff" stroke-width="2">
+    <!-- Server to Client 1 -->
+    <path d="M 400 80 L 100 150" />
+    <!-- Server to Client 2 -->
+    <path d="M 400 80 L 300 150" />
+    <!-- Server to Client 3 -->
+    <path d="M 400 80 L 500 150" />
+    <!-- Server to Client N -->
+    <path d="M 400 80 L 700 150" />
+  </g>
+
+  <!-- Replication arrows -->
+  <g fill="#00d4ff">
+    <!-- Server -> Clients (updates) -->
+    <path d="M 400 80 L 100 150" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 400 80 L 300 150" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 400 80 L 500 150" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 400 80 L 700 150" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+
+    <!-- Clients -> Server (inputs) -->
+    <path d="M 100 150 L 400 80" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 300 150 L 400 80" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 500 150 L 400 80" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+    <path d="M 700 150 L 400 80" fill="none" stroke="#00d4ff" stroke-width="1" marker-end="url(#arrow2)" marker-start="url(#dot)" />
+  </g>
+
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff" />
+    </marker>
+    <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+      <circle cx="3" cy="3" r="2" fill="#00d4ff" />
+    </marker>
+  </defs>
+
+  <text x="400" y="370" text-anchor="middle" fill="#666" font-family="Fira Code, monospace" font-size="10">
+    Client-side prediction + server reconciliation
+  </text>
+</svg>

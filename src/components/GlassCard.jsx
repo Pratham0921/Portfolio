@@ -9,7 +9,10 @@ export default function GlassCard({
 }) {
   return (
     <div
-      className={`${hover ? 'glass-card' : 'glass'} ${glow ? 'glow-border' : ''} ${className}`}
+      className={`${hover ? 'glass-card' : 'glass'} ${glow ? 'glow-accent' : ''} ${className}`}
+      style={{
+        '--glow-color': 'rgba(0, 212, 255, 0.15)'
+      }}
       {...props}
     >
       {children}

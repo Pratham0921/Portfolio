@@ -1,0 +1,115 @@
+[
+  {
+    "id": "niagara",
+    "system": "Niagara VFX",
+    "icon": "✨",
+    "mastery": "mastered",
+    "description": "Advanced particle systems with GPU simulation",
+    "details": [
+      "50+ particle types built for fire, smoke, explosions, magic, weather",
+      "GPU simulation for 10k+ particles at 60 FPS",
+      "Custom compute shaders for specialized effects",
+      "Data interfaces for gameplay interaction",
+      "Performance optimization through LOD systems"
+    ]
+  },
+  {
+    "id": "behavior-trees",
+    "system": "Behavior Trees & Blackboards",
+    "icon": "🧠",
+    "mastery": "mastered",
+    "description": "Complex AI decision-making systems",
+    "details": [
+      "Behavior Trees with 200+ nodes for squad AI",
+      "Custom decorators for advanced condition checking",
+      "Blackboard architecture for shared knowledge",
+      "Services and tasks for dynamic AI behavior",
+      "Integration with EQS for environmental queries"
+    ]
+  },
+  {
+    "id": "gas",
+    "system": "Gameplay Abilities (GAS)",
+    "icon": "⚡",
+    "mastery": "mastered",
+    "description": "Attribute and ability system with effects",
+    "details": [
+      "Custom gameplay effects and applicators",
+      "Multi-level cooldown and cost systems",
+      "Combat meters (stamina, mana, energy)",
+      "Ability prediction and rollback",
+      "Tag-based ability blocking and granting"
+    ]
+  },
+  {
+    "id": "pcg",
+    "system": "PCG (Procedural Generation)",
+    "icon": "🎲",
+    "mastery": "learning",
+    "description": "Algorithmic content generation",
+    "details": [
+      "Dungeon generation using BSP and room packing",
+      "Biome placement systems with density maps",
+      "Procedural foliage placement with collision checks",
+      "Weighted random selection for variability",
+      "Seeded generation for reproducible results"
+    ]
+  },
+  {
+    "id": "metahuman",
+    "system": "MetaHuman Integration",
+    "icon": "🧍",
+    "mastery": "not-started",
+    "description": "High-fidelity character creation and animation",
+    "details": [
+      "MetaHuman Creator integration planned",
+      "Facial animation and lip-sync systems",
+      "Full-body IK for natural movement",
+      "Hair and cloth simulation",
+      "Planned: Q2 2025"
+    ]
+  },
+  {
+    "id": "multiplayer",
+    "system": "Multiplayer & Networking",
+    "icon": "🌐",
+    "mastery": "mastered",
+    "description": "Robust networked gameplay systems",
+    "details": [
+      "Client-side prediction and lag compensation",
+      "Dedicated server authoritative architecture",
+      "Custom RPC system for efficient messaging",
+      "Networked property replication optimization",
+      "Replay and demo recording support"
+    ]
+  },
+  {
+    "id": "optimization",
+    "system": "Performance Optimization",
+    "icon": "🚀",
+    "mastery": "mastered",
+    "description": "Profiling and optimization techniques",
+    "details": [
+      "Unreal Insights deep-dive profiling",
+      "GPU profiling and shader complexity analysis",
+      "LOD systems for meshes and particles",
+      "Instanced rendering for thousands of objects",
+      "Async streaming and loading optimization",
+      "Package size reduction (847 MB → 312 MB achieved)"
+    ]
+  },
+  {
+    "id": "save-system",
+    "system": "Save Game System",
+    "icon": "💾",
+    "mastery": "mastered",
+    "description": "Robust async save/load with versioning",
+    "details": [
+      "Async saving without blocking main thread",
+      "Progress callbacks for UI feedback",
+      "Object versioning and migration",
+      "Cross-platform save compatibility",
+      "Cloud save integration (Steam/Epic)"
+    ]
+  }
+]

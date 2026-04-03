@@ -1,0 +1,26 @@
+{
+  "name": "Pratham Goyal",
+  "title": "Gameplay Programmer | Unreal Engine 5",
+  "tagline": "Systems • AI • Multiplayer • Performance",
+  "timezone": "IST (UTC+5:30)",
+  "availability": "9AM-6PM IST",
+  "email": "pratham.goyal013@gmail.com",
+  "workAuthorization": "Open to relocation • Visa sponsorship not required",
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com",
+      "icon": "🐙"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/yourprofile",
+      "icon": "💼"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/yourhandle",
+      "icon": "🐦"
+    }
+  ]
+}

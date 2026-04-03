@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(grep -r \"export default\" src/components/*.jsx)",
+      "Bash(npm list:*)",
+      "Bash(node -e \"require\\('./src/App.jsx'\\)\")",
+      "Bash(node:*)"
     ]
   }
 }

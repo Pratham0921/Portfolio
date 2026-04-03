@@ -1,0 +1,171 @@
+[
+  {
+    "id": "combat-system",
+    "title": "Sci-Fi Combat Framework",
+    "engine": "5.4",
+    "duration": "3 months",
+    "role": "Solo Developer",
+    "systems": [
+      "Custom Combat Framework",
+      "Squad AI (Behavior Trees)",
+      "Async Save/Load",
+      "Network Prediction"
+    ],
+    "thumbnail": null,
+    "hoverVideo": null,
+    "demo": "builds/combat.html",
+    "code": "https://github.com",
+    "codeSamples": [],
+    "metrics": {
+      "fpsBefore": 34,
+      "fpsAfter": 62,
+      "drawCallsBefore": 2400,
+      "drawCallsAfter": 1200,
+      "memoryBeforeMB": 1200,
+      "memoryAfterMB": 680,
+      "buildSizeMB": 847,
+      "optimizedSizeMB": 312
+    },
+    "optimizations": [
+      "Applied LODs to all skeletal meshes (saved 320 MB)",
+      "Used instanced static meshes for bullet/projectile rendering",
+      "Implemented async loading for non-critical assets",
+      "Reduced draw calls by merging static meshes"
+    ],
+    "diagrams": [
+      {
+        "title": "Component Hierarchy",
+        "url": "/diagrams/component-hierarchy.svg"
+      },
+      {
+        "title": "State Machine Flowchart",
+        "url": "/diagrams/state-machine.svg"
+      }
+    ],
+    "demoVideo": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "screenshots": []
+  },
+  {
+    "id": "multiplayer-shooter",
+    "title": "Team-Based Multiplayer Shooter",
+    "engine": "5.3",
+    "duration": "4 months",
+    "role": "Lead Network Programmer",
+    "systems": [
+      "Custom RPC System",
+      "Client-Side Prediction",
+      "Lag Compensation",
+      "Dedicated Server Support"
+    ],
+    "thumbnail": null,
+    "hoverVideo": null,
+    "demo": "builds/multiplayer.html",
+    "code": "https://github.com",
+    "codeSamples": [],
+    "metrics": {
+      "fpsBefore": 28,
+      "fpsAfter": 55,
+      "drawCallsBefore": 3200,
+      "drawCallsAfter": 1600,
+      "memoryBeforeMB": 1500,
+      "memoryAfterMB": 950,
+      "buildSizeMB": 1200,
+      "optimizedSizeMB": 580
+    },
+    "optimizations": [
+      "Implemented network relevance system to reduce replication",
+      "Used property replication conditions instead of always-replicate",
+      "Compressed player states to 60% original size"
+    ],
+    "diagrams": [
+      {
+        "title": "Network Replication Map",
+        "url": "/diagrams/network-replication.svg"
+      }
+    ],
+    "demoVideo": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "screenshots": []
+  },
+  {
+    "id": "ai-companion",
+    "title": "AI Companion System",
+    "engine": "5.4",
+    "duration": "2 months",
+    "role": "AI Specialist",
+    "systems": [
+      "Behavior Trees (200+ nodes)",
+      "Environmental Query System",
+      "Dynamic Dialogue System",
+      "Squad Coordination"
+    ],
+    "thumbnail": null,
+    "hoverVideo": null,
+    "demo": "builds/ai-companion.html",
+    "code": "https://github.com",
+    "codeSamples": [],
+    "metrics": {
+      "fpsBefore": 24,
+      "fpsAfter": 52,
+      "drawCallsBefore": 4100,
+      "drawCallsAfter": 2100,
+      "memoryBeforeMB": 1800,
+      "memoryAfterMB": 1100,
+      "buildSizeMB": 950,
+      "optimizedSizeMB": 420
+    },
+    "optimizations": [
+      "Reduced EQS query frequency from per-tick to 0.2s intervals",
+      "Instanced foliage to reduce draw calls",
+      "Pooled AI perception components"
+    ],
+    "diagrams": [
+      {
+        "title": "AI Behavior Tree Structure",
+        "url": "/diagrams/behavior-tree.svg"
+      }
+    ],
+    "demoVideo": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "screenshots": []
+  },
+  {
+    "id": "procedural-dungeon",
+    "title": "Procedural Dungeon Generator",
+    "engine": "5.4",
+    "duration": "6 weeks",
+    "role": "Tools & Systems Developer",
+    "systems": [
+      "PCG Algorithm (Binary Space Partitioning)",
+      "Room Templates & Prefabs",
+      "Dynamic NavMesh Generation",
+      "Progression Balancing"
+    ],
+    "thumbnail": null,
+    "hoverVideo": null,
+    "demo": "builds/dungeon.html",
+    "code": "https://github.com",
+    "codeSamples": [],
+    "metrics": {
+      "fpsBefore": 45,
+      "fpsAfter": 58,
+      "drawCallsBefore": 1800,
+      "drawCallsAfter": 1100,
+      "memoryBeforeMB": 800,
+      "memoryAfterMB": 620,
+      "buildSizeMB": 520,
+      "optimizedSizeMB": 380
+    },
+    "optimizations": [
+      "Spawned room meshes with distance-based LODs",
+      "Used instanced static meshes for dungeon props",
+      "Async streamed dungeon chunks"
+    ],
+    "diagrams": [
+      {
+        "title": "PCG Algorithm Flow",
+        "url": "/diagrams/pcg-flow.svg"
+      }
+    ],
+    "demoVideo": null,
+    "screenshots": []
+  }
+]

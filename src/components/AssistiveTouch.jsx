@@ -80,8 +80,8 @@ export default function AssistiveTouch() {
         animate={isOpen ? { rotate: 45 } : { rotate: 0 }}
         transition={{ type: 'spring', stiffness: 200 }}
       >
-        <span className="text-2xl">
-          {isOpen ? '×' : '👤'}
+        <span className="text-xl font-light">
+          {isOpen ? '×' : 'i'}
         </span>
       </motion.button>
     </div>

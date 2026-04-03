@@ -1,0 +1,83 @@
+[
+  {
+    "id": "navmesh-boundary",
+    "title": "NavMesh Boundary Issues",
+    "subtitle": "AI Navigation",
+    "context": "Squad-based shooter, 4v4 multiplayer with complex level geometry",
+    "severity": "High",
+    "problem": [
+      "40% of AI agents got stuck on navmesh edges during boundary transitions",
+      "Players noticed rubber-banding at map edges",
+      "QA flagged as game-breaking due to AI becoming unresponsive",
+      "Issue worsened with dynamic obstacles"
+    ],
+    "solution": [
+      "Implemented NavLinkProxies with custom movement component override",
+      "Overrode MoveRequestAccepted to add edge prediction logic",
+      "Added debug visualization for navmesh borders in development builds",
+      "Created editor tool to auto-generate links at level design time"
+    ],
+    "code": "AMyCharacter::MoveRequestAccepted(...)",
+    "impact": [
+      "Stuck AI reduced from 40% → 2.4%",
+      "Eliminated 15% of QA tickets related to navigation",
+      "Approach documented and reused across 5 maps"
+    ],
+    "video": "https://www.youtube.com/embed/example-navmesh"
+  },
+  {
+    "id": "replication-overflow",
+    "title": "Network Replication Spam",
+    "subtitle": "Multiplayer Performance",
+    "context": "32-player cooperative game with hundreds of interactive objects",
+    "severity": "Medium",
+    "problem": [
+      "Server network utilization spiking to 95% at 20+ players",
+      "Increased packet loss and lag spikes",
+      "High bandwidth costs on dedicated servers",
+      "New players experiencing initial freeze on join"
+    ],
+    "solution": [
+      "Implemented relevancy system with distance-based prioritization",
+      "Changed always-replicate properties to conditional with DOREPLIFETIME",
+      "Created custom compression for player state structs",
+      "Added async loading for non-critical replicated actors"
+    ],
+    "code": "GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)",
+    "impact": [
+      "Network traffic reduced by 62% per player",
+      "Server tick rate stabilized at 30Hz with 32 players",
+      "Join time improved from 8s to 2.5s",
+      "Bandwidth costs cut by 40%"
+    ],
+    "video": "https://www.youtube.com/embed/example-network"
+  },
+  {
+    "id": "memory-leak",
+    "title": "Async Save Memory Accumulation",
+    "subtitle": "Memory Management",
+    "context": "Save system for RPG with 200+ persistent actors",
+    "severity": "High",
+    "problem": [
+      "Memory usage growing by ~100MB every save operation",
+      "Eventually causing crashes on lower-end hardware",
+      "Save operations taking longer over time (up to 30s)",
+      "Garbage collection not reclaiming save-related objects"
+    ],
+    "solution": [
+      "Identified circular references preventing GC in save pipeline",
+      "Fixed TArray allocations not being cleared after async write",
+      "Added explicit object table cleanup after each save cycle",
+      "Implemented save batching to reduce overhead",
+      "Added memory profiling to detect future leaks early"
+    ],
+    "code": "TArray<uint8> SavedData; /* Cleanup added after save */",
+    "impact": [
+      "Eliminated memory leak completely",
+      "Stable memory footprint during saves (fluctuations < 10MB)",
+      "Save time consistent at 1.2s regardless of save count",
+      "No more save-related crashes reported"
+    ],
+    "video": null
+  }
+]

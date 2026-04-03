@@ -1,0 +1,116 @@
+[
+  {
+    "id": "april-2024",
+    "date": "April 2024",
+    "title": "Started UE5 (v5.2)",
+    "isCurrent": false,
+    "bullets": [
+      "Blueprint chaos, spaghetti graphs all over the place",
+      "First multiplayer prototype after 2 weeks (many bugs learned)",
+      "Didn't understand the difference between TArray and TSet (learned the hard way)",
+      "Thought 'Autorender' was a good subsystem name (it wasn't)"
+    ],
+    "attachments": []
+  },
+  {
+    "id": "july-2024",
+    "date": "July 2024",
+    "title": "C++ Integration Breakthrough",
+    "isCurrent": false,
+    "bullets": [
+      "\"Expose to Blueprint\" enlightenment moment - finally bridging C++ and BP",
+      "First proper UCLASS with correct garbage collection setup",
+      "Learned UFUNCTION() vs. native C++ methods",
+      "Started seeing Blueprints as glue, not the entire system"
+    ],
+    "attachments": [
+      {
+        "label": "First C++ Component",
+        "url": "https://github.com/example/first-cpp-component",
+        "type": "github"
+      }
+    ]
+  },
+  {
+    "id": "october-2024",
+    "date": "October 2024",
+    "title": "Systems Architecture Deep Dive",
+    "isCurrent": false,
+    "bullets": [
+      "Realized component composition > inheritance (life-changing)",
+      "Built reusable ability system using GAS",
+      "Learned to profile with Unreal Insights (no more guesswork)",
+      "Started answering UE questions on forums (reputation building)"
+    ],
+    "attachments": [
+      {
+        "label": "Component Architecture PDF",
+        "url": "/attachments/component-architecture.pdf",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "january-2025",
+    "date": "January 2025",
+    "title": "Optimization & Performance",
+    "isCurrent": false,
+    "bullets": [
+      "Multithreading with AsyncTasks and task graphs",
+      "GPU profiling and shader complexity reduction",
+      "Package size optimization: 847 MB → 312 MB (63% reduction)",
+      "Implemented LODs, instancing, and async streaming"
+    ],
+    "attachments": [
+      {
+        "label": "Before/After Profiler Comparison",
+        "url": "/attachments/profiler-comparison.png",
+        "type": "image"
+      }
+    ]
+  },
+  {
+    "id": "april-2025",
+    "date": "April 2025",
+    "title": "First Shipped Prototype",
+    "isCurrent": false,
+    "bullets": [
+      "3-month solo project from design to QA to patch",
+      "End-to-end pipeline: UE5 → Steam/Epic submission",
+      "Learned store requirements, ratings, and update process",
+      "First real player feedback (both good and bad)"
+    ],
+    "attachments": [
+      {
+        "label": "SteamDB Page",
+        "url": "https://steamdb.info/example",
+        "type": "link"
+      }
+    ]
+  },
+  {
+    "id": "current",
+    "date": "Current",
+    "title": "Senior Gameplay Programmer (Target)",
+    "isCurrent": true,
+    "bullets": [
+      "Deep diving into GAS advanced features, network prediction, and rendering",
+      "Contributing to Unreal Engine forums (50+ answers, 10k+ reputation)",
+      "Building YouTube tutorial series on UE5 gameplay systems",
+      "Mentoring junior developers on best practices",
+      "Exploring UE5's rendering pipeline for next-gen effects"
+    ],
+    "attachments": [
+      {
+        "label": "Forum Profile (50+ Answers)",
+        "url": "https://forums.unrealengine.com/profile/example",
+        "type": "link"
+      },
+      {
+        "label": "YouTube Tutorial Series",
+        "url": "https://youtube.com/example",
+        "type": "link"
+      }
+    ]
+  }
+]
