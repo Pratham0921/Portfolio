@@ -23,3 +23,10 @@ Failed to resolve dependency: [36m@react-three/drei[39m, present in 'optimizeD
 [2m11:13:08 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/index.css[22m
 [2m11:13:33 pm[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mtailwind.config.js[22m
 [2m11:13:55 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m11:14:22 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ToolboxSection.jsx, /src/index.css[22m
+[2m11:14:22 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ProjectsGrid.jsx, /src/index.css[22m
+[2m11:14:31 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/HeroSection.jsx, /src/index.css[22m
+[2m11:17:21 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m11:17:32 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ProjectModal.jsx[22m
+[2m11:17:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ProjectModal.jsx, /src/index.css[22m
+[2m11:19:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ProjectModal.jsx, /src/index.css[22m
