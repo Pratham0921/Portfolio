@@ -74,7 +74,7 @@ export default function AssistiveTouch() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="assistive-touch-btn w-14 h-14 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-lg hover:shadow-rose-500/50 transition-all"
+        className="assistive-touch-btn w-14 h-14 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/30 transition-all"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={isOpen ? { rotate: 45 } : { rotate: 0 }}

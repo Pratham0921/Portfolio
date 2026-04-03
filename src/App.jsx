@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import EnhancedBackground from './components/EnhancedBackground'
+import SimpleBackground from './components/SimpleBackground'
 import GlassCard from './components/GlassCard'
 import MotionSection from './components/MotionSection'
 import SkillBar from './components/SkillBar'
@@ -62,8 +62,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Enhanced Background */}
-      <EnhancedBackground />
+      {/* Simple Background */}
+      <SimpleBackground />
 
       {/* Custom Cursor */}
       <CustomCursor />
@@ -117,7 +117,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8 }}
-            className="hidden md:inline-block px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 relative overflow-hidden group"
+            className="hidden md:inline-block px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-amber-400 to-amber-500 text-white rounded-full hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 relative overflow-hidden group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -149,17 +149,17 @@ export default function App() {
             <motion.div
               animate={{ y: [0, -30, 0], x: [0, 10, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"
+              className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl"
             />
             <motion.div
               animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
               transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl"
+              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-400/15 rounded-full blur-3xl"
             />
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
               transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-1/2 left-1/2 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+              className="absolute top-1/2 left-1/2 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
             />
           </motion.div>
 
@@ -312,7 +312,7 @@ export default function App() {
 
                 <GlassCard className="p-6">
                   <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-3">
-                    <span className="text-2xl text-rose-400">⚡</span>
+                    <span className="text-2xl text-amber-400">⚡</span>
                     Core Skills
                   </h3>
                   <div className="space-y-4">
@@ -365,13 +365,13 @@ export default function App() {
 
                   <GlassCard hover className="p-6 md:p-8 ml-4">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="px-4 py-1.5 text-xs font-mono font-semibold text-amber-300 bg-amber-500/20 rounded-full border border-amber-500/30">
+                      <span className="px-4 py-1.5 text-xs font-mono font-semibold text-amber-300 bg-amber-400/10 rounded-full border border-amber-500/30">
                         {exp.period}
                       </span>
                       <span
                         className={`px-4 py-1.5 text-xs font-semibold rounded-full border ${
                           exp.type === 'EPIC QUEST'
-                            ? 'text-rose-300 bg-rose-500/20 border-rose-500/30'
+                            ? 'text-amber-300 bg-amber-400/15 border-amber-400/30'
                             : exp.type === 'MAIN QUEST'
                             ? 'text-cyan-300 bg-violet-500/20 border-cyan-500/30'
                             : 'text-emerald-300 bg-emerald-500/20 border-emerald-500/30'
@@ -403,7 +403,7 @@ export default function App() {
                           transition={{ delay: j * 0.1 }}
                           className="flex items-start gap-3 text-slate-400 group"
                         >
-                          <span className="text-rose-400 mt-0.5 transition-transform group-hover:translate-x-1">→</span>
+                          <span className="text-amber-400 mt-0.5 transition-transform group-hover:translate-x-1">→</span>
                           <span>{a}</span>
                         </motion.li>
                       ))}
@@ -483,7 +483,7 @@ export default function App() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: j * 0.05 }}
-                            className="px-3 py-1.5 text-xs font-mono bg-amber-500/10 text-amber-300 rounded-lg border border-blue-500/20 hover:bg-amber-500/20 transition-colors"
+                            className="px-3 py-1.5 text-xs font-mono bg-amber-500/10 text-amber-300 rounded-lg border border-blue-500/20 hover:bg-amber-400/10 transition-colors"
                           >
                             {tech}
                           </motion.span>
@@ -661,7 +661,7 @@ export default function App() {
                     </div>
                     <motion.button
                       type="submit"
-                      className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
+                      className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-white rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-amber-500/10 relative overflow-hidden group"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >

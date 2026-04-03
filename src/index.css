@@ -29,35 +29,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #60a5fa, #a78bfa);
+  background: linear-gradient(180deg, #fcd34d, #fbbf24);
 }
 
-/* Glassmorphism */
+/* Glassmorphism - minimal */
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(59, 130, 246, 0.4);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-              0 0 40px rgba(59, 130, 246, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Gradient text */
+/* Gradient text - amber accent */
 .gradient-text {
-  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #a855f7 100%);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -66,20 +65,21 @@ body {
 /* Gradient button */
 .btn-gradient {
   position: relative;
-  background: linear-gradient(135deg, #f97316, #ec4899);
+  background: linear-gradient(135deg, #f59e0b, #d97706);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
   overflow: hidden;
   transition: all 0.3s;
+  border: none;
 }
 
 .btn-gradient::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #ec4899, #a855f7);
+  background: linear-gradient(135deg, #d97706, #b45309);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -95,20 +95,20 @@ body {
 
 /* Skill bar */
 .skill-bar {
-  height: 6px;
-  background: #333;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   overflow: hidden;
 }
 
 .skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, #f97316, #ec4899);
+  background: linear-gradient(90deg, #f59e0b, #d97706);
   border-radius: 999px;
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Section header underline animation */
+/* Section header underline */
 .section-header {
   position: relative;
   display: inline-block;
@@ -120,8 +120,8 @@ body {
   bottom: -8px;
   left: 0;
   width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #f97316, #ec4899);
+  height: 2px;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -129,9 +129,9 @@ body {
   width: 100%;
 }
 
-/* Content width container */
+/* Content width */
 .content-width {
-  max-width: 1200px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -141,6 +141,6 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .glass-card {
-    border-radius: 0.75rem;
+    border-radius: 0.625rem;
   }
 }
