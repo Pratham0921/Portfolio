@@ -2,19 +2,17 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navigation from './components/Navigation'
 import HeroSection from './components/HeroSection'
+import BioSection from './components/BioSection'
 import ProjectsGrid from './components/ProjectsGrid'
 import ToolboxSection from './components/ToolboxSection'
 import CaseStudies from './components/CaseStudies'
 import LearningTimeline from './components/LearningTimeline'
 import ContactForm from './components/ContactForm'
 import PageTransition from './components/PageTransition'
-import BitsBackground from './components/BitsBackground'
-import ReliableBackground from './components/ReliableBackground'
 import PixelSnow from './components/PixelSnow'
 import IntroOverlay from './components/IntroOverlay'
-import CustomCursor from './components/CustomCursor'
-import AppDock from './components/AppDock'
-import { defaultDockItems } from './components/AppDock'
+import MinimalBackground from './components/MinimalBackground'
+
 
 export default function App() {
   const [isNavigating, setIsNavigating] = useState(false)
@@ -36,12 +34,9 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Animated Background - Using react-bits and particle snow per the user's request */}
-      <BitsBackground effectMode="mixed" density="high" colorScheme="neutral" enableSnow={true} enableParticles={true} />
-
-
-      {/* Custom Cursor */}
-      <CustomCursor />
+      {/* Pixel Snow Background per user request */}
+      <MinimalBackground />
+      <PixelSnow density={60} speed={0.5} />
 
       {/* Intro Overlay */}
       <IntroOverlay onComplete={() => setIntroCompleted(true)} />
@@ -61,6 +56,9 @@ export default function App() {
           <main>
             {/* Hero Section */}
             <HeroSection />
+
+          {/* Bio Section */}
+          <BioSection />
 
           {/* Toolbox Section (moved before projects for better flow) */}
           <ToolboxSection />
@@ -100,8 +98,6 @@ export default function App() {
       </PageTransition>
       </motion.div>
 
-      {/* App Dock */}
-      <AppDock items={defaultDockItems} />
     </div>
   )
 }

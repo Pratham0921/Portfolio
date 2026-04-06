@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectModal from './ProjectModal'
 import projectsData from '../data/projects.json'
@@ -24,9 +24,7 @@ export default function ProjectsGrid() {
                   {project.thumbnail ? (
                     <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-surface-light to-surface">
-                      <span className="text-sm font-mono text-text-secondary">NO PREVIEW</span>
-                    </div>
+                    <img src={`https://picsum.photos/seed/${project.id}/800/600`} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 sepia-[.3] hue-rotate-[-30deg]" loading="lazy" />
                   )}
 
                   {project.hoverVideo && (

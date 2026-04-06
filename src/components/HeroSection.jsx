@@ -177,6 +177,8 @@ export default function HeroSection() {
            <LogoWall logos={frameworkLogos2} speed={30} direction="right" />
         </div>
       </motion.div>
+
     </section>
   )
 }
+
