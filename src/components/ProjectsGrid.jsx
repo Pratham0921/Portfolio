@@ -2,98 +2,100 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectModal from './ProjectModal'
 import projectsData from '../data/projects.json'
-import SpotlightCard from './SpotlightCard'
 
 export default function ProjectsGrid() {
   const [selectedProject, setSelectedProject] = useState(null)
-  const projects = projectsData
-
-  const getBentoClass = (index) => {
-    switch (index % 6) {
-      case 0: return "col-span-1 md:col-span-2 lg:col-span-2 row-span-2" // Massive Hero
-      case 1: return "col-span-1 md:col-span-1 lg:col-span-1 row-span-1" // Standard
-      case 2: return "col-span-1 md:col-span-1 lg:col-span-1 row-span-1" // Standard
-      case 3: return "col-span-1 md:col-span-2 lg:col-span-2 row-span-1" // Wide horizontal
-      case 4: return "col-span-1 md:col-span-1 lg:col-span-1 row-span-2" // Tall vertical
-      case 5: return "col-span-1 md:col-span-1 lg:col-span-1 row-span-1" // Standard
-      default: return "col-span-1 row-span-1"
-    }
-  }
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-transparent">
       <div className="content-width">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 section-header">Projects</h2>
+          <div className="w-20 h-1 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] mb-4" />
           <p className="text-text-secondary text-lg">Technical showcases built with Unreal Engine 5</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[320px]">
-          {projects.map((project, index) => (
-            <motion.div 
-              key={project.id} 
-              initial={{ opacity: 0, y: 50 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ delay: index * 0.1 }}
-              className={getBentoClass(index)}
-            >
-              <SpotlightCard className="h-full flex flex-col p-0 group border-surface/50 overflow-hidden bg-surface/30">
-                <div className="relative aspect-video bg-black border-b border-surface">
+        {/* 2-Column Grid for optimal space/density ratio (No messy collage, but not overly massive) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
+          {projectsData.map((project, index) => {
+            return (
+              <motion.div 
+                key={project.id} 
+                initial={{ opacity: 0, y: 50 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
+                className="flex flex-col group h-full"
+              >
+                {/* Generous Image Container (Cinematic Aspect Ratio) */}
+                <div className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)] mb-8">
                   {project.thumbnail ? (
-                    <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                    <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   ) : (
-                    <img src={`https://picsum.photos/seed/${project.id}/800/600`} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 sepia-[.3] hue-rotate-[-30deg]" loading="lazy" />
+                    <img src={`https://picsum.photos/seed/${project.id}/1600/900`} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60" loading="lazy" />
                   )}
 
                   {project.hoverVideo && (
-                    <video className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300" src={project.hoverVideo} muted loop playsInline />
+                    <video className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" src={project.hoverVideo} muted loop playsInline />
                   )}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-5 left-6 right-6 flex justify-between items-end">
+                    <span className="text-white/60 font-mono text-xs tracking-[0.2em] uppercase block">
+                      Project // 0{index + 1}
+                    </span>
+                    <button onClick={() => setSelectedProject(project)} className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white bg-black/40 backdrop-blur hover:bg-white hover:text-black transition-all">
+                      {'>'}
+                    </button>
+                  </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col pointer-events-none">
-                  <div className="flex items-start gap-4 mb-6">
-                    <motion.span className="text-xs font-mono px-2 py-1 rounded bg-accent/10 text-accent" whileHover={{ scale: 1.08 }} transition={{ type: 'spring', stiffness: 300 }}>
-                      GAME
-                    </motion.span>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
-                      <p className="text-sm text-text-secondary">UE {project.engine} | {project.duration} | {project.role}</p>
+                {/* Text Content Area (Bottom) */}
+                <div className="flex flex-col flex-1">
+                  <div className="mb-6 flex justify-between items-start gap-4">
+                    <h3 className="text-3xl font-bold text-white tracking-tight leading-tight">{project.title}</h3>
+                    <div className="flex flex-col items-end gap-1 font-mono text-[10px] text-text-secondary whitespace-nowrap">
+                      <span className="bg-white/10 text-white px-2 py-1 rounded">UE {project.engine}</span>
+                      <span>{project.role}</span>
                     </div>
                   </div>
 
-                  <div className="hidden lg:block mb-4 flex-1">
-                    <p className="text-xs font-mono text-accent mb-2 uppercase tracking-wider">Systems</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-8 flex-1">
+                    <p className="text-accent font-mono text-xs uppercase tracking-widest mb-3">Core Architecture</p>
+                    <ul className="space-y-2">
                       {project.systems?.slice(0, 3).map((system, i) => (
-                        <span key={i} className="text-xs bg-black/50 border border-white/10 px-2 py-1 rounded text-text-secondary blur-none">
-                          {system}
-                        </span>
+                        <li key={i} className="flex items-start gap-3 text-text-secondary text-sm">
+                          <span className="text-white/30 font-mono mt-0.5">{'>'}</span>
+                          <span className="leading-relaxed truncate">{system}</span>
+                        </li>
                       ))}
                       {project.systems?.length > 3 && (
-                         <span className="text-xs bg-black/50 border border-white/10 px-2 py-1 rounded text-text-secondary blur-none">+{project.systems.length - 3}</span>
+                         <li className="flex items-start gap-3 text-white/40 text-sm italic">
+                           <span className="text-transparent font-mono mt-0.5">{'>'}</span>
+                           <span className="leading-relaxed">+{project.systems.length - 3} more systems...</span>
+                         </li>
                       )}
-                    </div>
+                    </ul>
                   </div>
 
-                  <div className="flex gap-4 pt-4 border-t border-white/10 text-sm font-medium font-mono pointer-events-auto backdrop-blur-sm bg-black/40 p-2 rounded-lg w-max">
-                    <button onClick={() => setSelectedProject(project)} className="flex items-center gap-2 text-accent hover:text-accent-light transition-colors">
-                      <span>{'>'}</span> Demo
+                  <div className="flex items-center gap-6 pt-5 border-t border-white/10 mt-auto">
+                    <button onClick={() => setSelectedProject(project)} className="text-white text-sm font-mono hover:text-accent transition-colors flex items-center gap-2 group/btn font-bold">
+                      <span className="border border-white/20 px-2 py-1 rounded group-hover/btn:border-accent">VIEW</span> Case Study
                     </button>
-                    <button onClick={() => setSelectedProject(project)} className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors">
-                      <span>{'</>'}</span> Code
-                    </button>
-                    <button onClick={() => setSelectedProject(project)} className="flex items-center gap-2 text-text-secondary hover:text-accent transition-colors">
-                      <span>#</span> Metrics
-                    </button>
+                    {project.code && (
+                      <a href={project.code} target="_blank" rel="noopener noreferrer" className="text-text-muted text-sm font-mono hover:text-white transition-colors ml-auto">
+                        [ GitHub ]
+                      </a>
+                    )}
                   </div>
                 </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
+
+              </motion.div>
+            )
+          })}
         </div>
+
       </div>
 
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}

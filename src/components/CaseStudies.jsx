@@ -27,7 +27,7 @@ export default function CaseStudies() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 
-                {/* FRONT FACE (Minimal Identity) */}
+                {/* FRONT FACE */}
                 <div 
                   className="absolute inset-0 w-full h-full bg-black/40 border border-white/5 backdrop-blur-sm rounded-xl p-8 flex flex-col justify-between overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] backface-hidden"
                   style={{ backfaceVisibility: "hidden" }}
@@ -48,7 +48,7 @@ export default function CaseStudies() {
                   </div>
                 </div>
 
-                {/* BACK FACE (Data Analysis) */}
+                {/* BACK FACE */}
                 <div 
                   className="absolute inset-0 w-full h-full bg-white/5 border border-white/20 backdrop-blur-md rounded-xl p-6 flex flex-col overflow-y-auto custom-scrollbar shadow-[0_0_50px_rgba(255,255,255,0.05)] backface-hidden [transform:rotateY(180deg)]"
                   style={{ backfaceVisibility: "hidden" }}
