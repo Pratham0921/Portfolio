@@ -1,114 +1,126 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import timelineData from '../data/timeline.json'
 
 export default function LearningTimeline() {
-  const [visibleItems, setVisibleItems] = useState(new Set())
+  const [activeIndex, setActiveIndex] = useState(0)
   const itemRefs = useRef([])
 
   useEffect(() => {
+    // Detect which timeline element occupies the middle of the screen
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const id = entry.target.dataset.id
-          setVisibleItems(prev => new Set(prev).add(id))
+          setActiveIndex(Number(entry.target.dataset.index))
         }
       })
-    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
+    }, { threshold: 0.3, rootMargin: '-20% 0px -40% 0px' })
 
     itemRefs.current.forEach((ref) => ref && observer.observe(ref))
     return () => observer.disconnect()
   }, [])
 
+  const activeEntry = timelineData[activeIndex] || timelineData[0]
+
   return (
     <section id="journey" className="py-32 relative overflow-hidden bg-transparent">
-      <div className="content-width flex flex-col lg:flex-row gap-16 relative">
-        
-        {/* Sticky Left Column: Cinematic Header */}
-        <div className="lg:w-1/3 relative">
-          <div className="sticky top-32">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                Architectural <br className="hidden lg:block" />
-                Evolution
-              </h2>
-              <div className="w-20 h-1 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] mb-8" />
-              <p className="text-text-secondary text-lg leading-relaxed max-w-sm">
-                A chronolgy of technical growth. Transitioning from visual scripting fundamentals entirely into deep engine architecture and high-performance C++ systems.
-              </p>
-                
-              <div className="mt-12 hidden lg:flex flex-col gap-4 text-sm font-mono text-white/30 border-l border-white/10 pl-4">
-                <span>[ SCROLL TO EXPLORE ]</span>
-                <span className="text-white/60">{'|'}</span>
-                <span className="text-white/40">{'v'}</span>
-              </div>
-            </motion.div>
+      <div className="content-width">
+        {/* Top Header */}
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+            Architectural Evolution
+          </h2>
+          <div className="w-20 h-1 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] mb-8" />
+          <p className="text-text-secondary text-lg leading-relaxed max-w-sm">
+            Scroll to trace the timeline of systems engineering mastery.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col lg:flex-row gap-16 relative">
+          
+          {/* Dynamic Sticky Left Canvas */}
+          <div className="hidden lg:block w-1/2 relative h-full">
+            <div className="sticky top-1/4 h-[50vh] flex flex-col justify-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={activeEntry.id}
+                  initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0 flex flex-col justify-center"
+                >
+                  {/* Massive background number */}
+                  <div className="text-[250px] xl:text-[300px] font-black font-mono text-white/[0.03] leading-none tracking-tighter absolute -left-10 -top-20 pointer-events-none select-none">
+                    {String(activeIndex + 1).padStart(2, '0')}
+                  </div>
+                  
+                  {/* Dynamic Focus Content */}
+                  <div className="relative z-10 border-l px-8 border-white/20 ml-4 py-4 backdrop-blur-[2px]">
+                    <div className="absolute left-[-2px] tracking-tight top-0 w-[3px] h-10 bg-white shadow-[0_0_15px_rgba(255,255,255,1)]" />
+                    <span className="font-mono text-accent tracking-widest text-sm mb-4 block font-bold">{activeEntry.date}</span>
+                    <h3 className="text-4xl xl:text-5xl font-bold tracking-tight text-white drop-shadow-xl">{activeEntry.title}</h3>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
 
-        {/* Scrolling Right Column: Event Narrative */}
-        <div className="lg:w-2/3 flex flex-col gap-20">
-          {timelineData.map((entry, index) => {
-            const isVisible = visibleItems.has(entry.id)
-            const isCurrent = entry.isCurrent
+          {/* Scrolling Right Column: Event Narrative */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-32 py-10 lg:py-[20vh]">
+            {timelineData.map((entry, index) => {
+              const isActive = activeIndex === index
 
-            return (
-              <motion.div 
-                key={entry.id}
-                ref={(el) => { itemRefs.current[index] = el }} 
-                data-id={entry.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative p-8 md:p-10 rounded-2xl border transition-all duration-700
-                  ${isCurrent 
-                    ? 'bg-white/5 border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
-                    : 'bg-transparent border-white/5 hover:border-white/10 hover:bg-black/20'
-                  }`}
-              >
-                {/* Event Header row */}
-                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-8 gap-4 border-b border-white/5 pb-6">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">{entry.title}</h3>
-                  <div className="flex items-center gap-4 border border-white/10 rounded-full px-4 py-1.5 bg-black/40 w-fit">
-                    {isCurrent && <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,1)] animate-pulse" />}
-                    <time className="text-white/70 font-mono text-sm tracking-widest">{entry.date}</time>
+              return (
+                <div 
+                  key={entry.id}
+                  ref={(el) => { itemRefs.current[index] = el }} 
+                  data-index={index}
+                  className={`transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-30 hover:opacity-70'}`}
+                >
+                  {/* Mobile-only header mapping since sticky canvas is hidden on mobile */}
+                  <div className="lg:hidden mb-6 border-l-2 border-white pl-4 py-1">
+                     <span className="font-mono text-accent text-xs tracking-widest mb-1 block">{entry.date}</span>
+                     <h3 className="text-2xl font-bold text-white">{entry.title}</h3>
                   </div>
-                </div>
 
-                {/* Sub-Bullets replacing generic list */}
-                <div className="flex flex-col gap-6">
-                  {entry.bullets.map((bullet, i) => (
-                    <div key={i} className="flex gap-4 items-start group">
-                      <div className="w-6 text-white/30 font-mono text-sm pt-0.5 group-hover:text-white transition-colors">{(i + 1).toString().padStart(2, '0')}</div>
-                      <div className="flex-1 text-text-secondary leading-relaxed group-hover:text-white/90 transition-colors">
-                        {bullet}
+                  {/* Sub-Bullets replacing generic list */}
+                  <div className="flex flex-col gap-8 bg-black/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    {entry.bullets.map((bullet, i) => (
+                      <div key={i} className="flex gap-4 items-start group">
+                        <div className="w-8 h-8 flex-shrink-0 border border-white/10 bg-white/5 rounded-full flex items-center justify-center font-mono text-xs text-white/50 group-hover:text-white group-hover:bg-white/10 transition-colors shadow-sm">
+                          {i + 1}
+                        </div>
+                        <div className="flex-1 text-text-secondary leading-relaxed pt-1 group-hover:text-white transition-colors">
+                          {bullet}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Resources / Links */}
-                {entry.attachments && entry.attachments.length > 0 && (
-                  <div className="mt-10 pt-6 border-t border-white/5 flex flex-wrap gap-4">
-                    {entry.attachments.map((att, i) => (
-                      <a 
-                        key={i} 
-                        href={att.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="group flex items-center justify-between px-5 py-3 bg-black/50 border border-white/10 rounded-lg hover:border-white/40 hover:bg-white/5 transition-all text-sm font-mono flex-1 min-w-[200px]"
-                      >
-                        <span className="text-white/80 group-hover:text-white">{att.label}</span>
-                        <span className="text-white/40 group-hover:text-white transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">↗</span>
-                      </a>
                     ))}
-                  </div>
-                )}
-              </motion.div>
-            )
-          })}
-        </div>
 
+                    {/* Resources / Links */}
+                    {entry.attachments && entry.attachments.length > 0 && (
+                      <div className="pt-8 border-t border-white/10 flex flex-wrap gap-4 mt-2">
+                        {entry.attachments.map((att, i) => (
+                          <a 
+                            key={i} 
+                            href={att.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="flex items-center gap-2 group text-sm font-mono"
+                          >
+                            <span className="w-6 h-6 flex items-center justify-center bg-white/5 border border-white/20 rounded text-text-muted group-hover:bg-white group-hover:text-black transition-all">↗</span>
+                            <span className="text-white/60 group-hover:text-white transition-colors">{att.label}</span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
       </div>
     </section>
   )
