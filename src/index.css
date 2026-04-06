@@ -1,9 +1,9 @@
+/* Import must come first */
+@import "prismjs/themes/prism-tomorrow.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Prism.js theme */
-@import "prismjs/themes/prism-tomorrow.css";
 
 /* Skip to content link */
 .skip-link {
@@ -242,6 +242,73 @@ pre[class*="language-"] {
 .token.important,
 .token.variable {
   color: #ff7b72;
+}
+
+@keyframes shiny {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shiny {
+  animation-name: shiny;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Gradient orb floating animations */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -30px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-20px, 20px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(30px, 10px) rotate(3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-30px, 20px) rotate(-5deg);
+  }
+  50% {
+    transform: translate(20px, -20px) rotate(5deg);
+  }
+  75% {
+    transform: translate(-20px, -30px) rotate(-3deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.animate-float {
+  animation: float 25s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 30s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 35s ease-in-out infinite;
 }
 
 /* Responsive */

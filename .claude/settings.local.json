@@ -7,7 +7,9 @@
       "Bash(grep -r \"export default\" src/components/*.jsx)",
       "Bash(npm list:*)",
       "Bash(node -e \"require\\('./src/App.jsx'\\)\")",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebSearch",
+      "Bash(npm uninstall:*)"
     ]
   }
 }

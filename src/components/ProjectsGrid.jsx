@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectModal from './ProjectModal'
 import projectsData from '../data/projects.json'
+import SpotlightCard from './SpotlightCard'
 
 export default function ProjectsGrid() {
   console.log('ProjectsGrid rendering, projects:', projectsData?.length)
@@ -35,7 +36,7 @@ export default function ProjectsGrid() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="glass-card h-full flex flex-col overflow-hidden group">
+              <SpotlightCard className="h-full flex flex-col p-0 group border-surface/50 overflow-hidden bg-surface/30">
                 {/* Thumbnail */}
                 <div className="relative aspect-video bg-black border-b border-surface">
                   {project.thumbnail ? (
@@ -123,7 +124,7 @@ export default function ProjectsGrid() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

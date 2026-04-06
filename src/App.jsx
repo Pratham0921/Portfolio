@@ -8,6 +8,7 @@ import CaseStudies from './components/CaseStudies'
 import LearningTimeline from './components/LearningTimeline'
 import ContactForm from './components/ContactForm'
 import PageTransition from './components/PageTransition'
+import SimpleBitsBg from './components/SimpleBitsBg'
 
 export default function App() {
   console.log('App rendering...')
@@ -31,6 +32,9 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
+      {/* Animated Background */}
+      <SimpleBitsBg />
+
       {/* Navigation */}
       <Navigation onNavigate={handleNavigate} />
 

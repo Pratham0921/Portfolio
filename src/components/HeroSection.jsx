@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import ShinyText from './ShinyText'
+import SpotlightCard from './SpotlightCard'
+import SplitText from './SplitText'
 
 export default function HeroSection() {
   console.log('HeroSection rendering')
@@ -23,7 +26,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Grid Pattern (UE5 Editor style) */}
-      <div className="absolute inset-0 bg-background">
+      <div className="absolute inset-0">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -98,10 +101,15 @@ export default function HeroSection() {
         >
           <div>
             <p className="text-accent font-mono text-sm tracking-[0.2em] uppercase mb-4">
-              Gameplay Programmer
+              <ShinyText text="Gameplay Programmer" speed={3} />
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-              Pratham Goyal
+              <SplitText 
+                text="Pratham Goyal" 
+                delay={0.1} 
+                animationFrom={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+                animationTo={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              />
             </h1>
             <p className="text-xl text-text-secondary font-light">
               Unreal Engine 5 Expert<br />
@@ -112,13 +120,16 @@ export default function HeroSection() {
           {/* Tech Stack Grid */}
           <div className="grid grid-cols-2 gap-4">
             {techStack.map((tech) => (
-              <div
+              <SpotlightCard
                 key={tech.name}
-                className="flex items-center gap-3 p-3 bg-surface/50 border border-surface rounded"
+                className="p-3 bg-surface/30 border-surface/50"
+                spotlightColor="rgba(0, 212, 255, 0.15)"
               >
-                <span className="text-2xl">{tech.icon}</span>
-                <span className="text-sm font-medium text-text-primary">{tech.name}</span>
-              </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{tech.icon}</span>
+                  <span className="text-sm font-medium text-text-primary">{tech.name}</span>
+                </div>
+              </SpotlightCard>
             ))}
           </div>
 
