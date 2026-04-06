@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ShinyText from './ShinyText'
-import SpotlightCard from './SpotlightCard'
 import SplitText from './SplitText'
+import SpotlightCard from './SpotlightCard'
 
 export default function HeroSection() {
-  console.log('HeroSection rendering')
   const [isPlaying, setIsPlaying] = useState(false)
 
   const techStack = [
@@ -17,28 +15,23 @@ export default function HeroSection() {
     { name: 'PCG', icon: '🎲' },
   ]
 
-  const handlePlay = () => {
-    setIsPlaying(true)
-    // In production, this would initialize the WebGL context
-    // For now, we'll show a placeholder
-  }
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background Grid Pattern (UE5 Editor style) */}
-      <div className="absolute inset-0">
+      {/* Animated grid background */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: '48px 48px'
           }}
         />
       </div>
 
+      {/* Content */}
       <div className="content-width relative z-10 grid lg:grid-cols-[60%_40%] gap-8 items-center py-8">
         {/* Left Side - WebGL Demo */}
         <motion.div
@@ -47,27 +40,28 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="relative bg-black border border-accent/30 rounded-lg overflow-hidden shadow-glow-accent">
-            {/* WebGL Canvas / YouTube Embed */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="relative bg-black/40 border border-white/10 rounded-lg overflow-hidden backdrop-blur-sm"
+          >
             <div className="aspect-video relative">
               {!isPlaying ? (
-                // Play button overlay
                 <div
-                  className="absolute inset-0 flex items-center justify-center bg-black/80 cursor-pointer group"
-                  onClick={handlePlay}
+                  className="absolute inset-0 flex items-center justify-center bg-black/60 cursor-pointer group"
+                  onClick={() => setIsPlaying(true)}
                 >
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-20 h-20 rounded-full border-4 border-accent flex items-center justify-center"
+                    className="w-20 h-20 rounded-full border-2 border-white/60 flex items-center justify-center"
                   >
-                    <svg className="w-10 h-10 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-white/80 ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </motion.div>
-                  <p className="absolute bottom-8 text-accent font-mono text-sm">Click to Play</p>
+                  <p className="absolute bottom-8 text-white/60 font-mono text-sm">Launch Demo</p>
                 </div>
               ) : (
-                // Placeholder for WebGL build or YouTube video
                 <iframe
                   className="w-full h-full border-0"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
@@ -78,17 +72,15 @@ export default function HeroSection() {
               )}
             </div>
 
-            {/* Controls hint */}
-            <div className="absolute bottom-4 left-4 flex gap-4 text-xs font-mono text-accent/80 bg-black/60 px-3 py-2 rounded">
+            <div className="absolute bottom-4 left-4 flex gap-4 text-xs font-mono text-white/60 bg-black/40 px-3 py-1.5 rounded backdrop-blur-sm">
               <span>WASD</span>
               <span>Mouse</span>
               <span>Space</span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Technical note */}
           <div className="mt-3 text-xs font-mono text-text-secondary">
-            <span className="text-accent">●</span> Built with UE 5.4 | 47 MB | 60 FPS
+            <span className="text-white">●</span> LIVE UE 5.4 build | 47 MB | 60 FPS target
           </div>
         </motion.div>
 
@@ -100,73 +92,121 @@ export default function HeroSection() {
           className="flex flex-col justify-center space-y-8"
         >
           <div>
-            <p className="text-accent font-mono text-sm tracking-[0.2em] uppercase mb-4">
-              <ShinyText text="Gameplay Programmer" speed={3} />
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="text-white/70 font-mono text-sm tracking-[0.3em] uppercase mb-4"
+            >
+              Gameplay Engineer
+            </motion.p>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-              <SplitText 
-                text="Pratham Goyal" 
-                delay={0.1} 
-                animationFrom={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              <SplitText
+                text="Pratham"
+                delay={0.02}
+                animationFrom={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                 animationTo={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               />
+              <br />
+              <SplitText
+                text="Goyal"
+                delay={0.02}
+                animationFrom={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                animationTo={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                className="text-white/90"
+              />
             </h1>
-            <p className="text-xl text-text-secondary font-light">
-              Unreal Engine 5 Expert<br />
-              <span className="text-accent">Systems • AI • Multiplayer</span>
-            </p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              className="text-lg text-text-secondary font-light"
+            >
+              Unreal Engine specialist
+              <br />
+              <span className="text-white/80">Systems | AI | Multiplayer</span>
+            </motion.p>
           </div>
 
           {/* Tech Stack Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {techStack.map((tech) => (
-              <SpotlightCard
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="grid grid-cols-2 gap-3"
+          >
+            {techStack.map((tech, i) => (
+              <motion.div
                 key={tech.name}
-                className="p-3 bg-surface/30 border-surface/50"
-                spotlightColor="rgba(0, 212, 255, 0.15)"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.3 + i * 0.05 }}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{tech.icon}</span>
-                  <span className="text-sm font-medium text-text-primary">{tech.name}</span>
-                </div>
-              </SpotlightCard>
+                <SpotlightCard
+                  className="p-3 bg-white/5 border-white/10"
+                  spotlightColor="rgba(255, 255, 255, 0.08)"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-mono px-2 py-1 rounded bg-white/10 text-white/90">{tech.icon}</span>
+                    <span className="text-sm font-medium text-white/80">{tech.name}</span>
+                  </div>
+                </SpotlightCard>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <a
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.6, duration: 0.6 }}
+            className="flex flex-wrap gap-4"
+          >
+            <motion.a
               href="/resume.pdf"
               download
-              className="px-6 py-3 bg-accent text-black font-semibold rounded hover:shadow-glow-accent transition-all font-mono text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 bg-white text-black font-semibold rounded transition-all font-mono text-sm"
             >
-              ↓ Resume
-            </a>
-            <a
+              Download Resume
+            </motion.a>
+            <motion.a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-accent text-accent rounded hover:bg-accent/10 transition-all font-mono text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 border border-white/30 text-white rounded hover:bg-white/5 transition-all font-mono text-sm"
             >
               GitHub
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="px-6 py-3 border border-surface text-white rounded hover:border-accent hover:text-accent transition-all font-mono text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 border border-white/20 text-white/80 rounded hover:border-white/40 hover:text-white transition-all font-mono text-sm"
             >
               Contact
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           {/* Work Authorization */}
-          <div className="text-sm text-text-secondary space-y-2 pt-4 border-t border-surface">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.6 }}
+            className="text-sm text-text-secondary space-y-2 pt-4 border-t border-white/10"
+          >
             <p>
-              <span className="text-accent font-mono">Timezone:</span> IST (UTC+5:30) • Available 9AM-6PM IST
+              <span className="text-white font-mono">Timezone:</span> IST (UTC+5:30) | Available 9AM-6PM IST
             </p>
             <p>
-              <span className="text-accent font-mono">Work Auth:</span> Open to relocation • Visa sponsorship not required
+              <span className="text-white font-mono">Work Auth:</span> Open to relocation | Visa sponsorship not required
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

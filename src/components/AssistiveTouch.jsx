@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { portfolioData } from '../data/portfolio'
 
@@ -81,9 +81,10 @@ export default function AssistiveTouch() {
         transition={{ type: 'spring', stiffness: 200 }}
       >
         <span className="text-xl font-light">
-          {isOpen ? '×' : 'i'}
+          {isOpen ? '' : 'i'}
         </span>
       </motion.button>
     </div>
   )
 }
+

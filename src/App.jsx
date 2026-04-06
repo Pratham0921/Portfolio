@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+﻿import { useState } from 'react'
+import { motion } from 'framer-motion'
 import Navigation from './components/Navigation'
 import HeroSection from './components/HeroSection'
 import ProjectsGrid from './components/ProjectsGrid'
@@ -8,11 +8,13 @@ import CaseStudies from './components/CaseStudies'
 import LearningTimeline from './components/LearningTimeline'
 import ContactForm from './components/ContactForm'
 import PageTransition from './components/PageTransition'
-import SimpleBitsBg from './components/SimpleBitsBg'
+import BitsBackground from './components/BitsBackground'
+import IntroOverlay from './components/IntroOverlay'
+import CustomCursor from './components/CustomCursor'
 
 export default function App() {
-  console.log('App rendering...')
   const [isNavigating, setIsNavigating] = useState(false)
+  const [introCompleted, setIntroCompleted] = useState(false)
 
   const handleNavigate = () => {
     setIsNavigating(true)
@@ -28,21 +30,32 @@ export default function App() {
     }
   }
 
-  console.log('App rendered')
-
   return (
     <div className="relative min-h-screen">
-      {/* Animated Background */}
-      <SimpleBitsBg />
+      {/* Animated Background - Mixed mode for maximum effects */}
+      <BitsBackground effectMode="mixed" density="medium" colorScheme="monochrome" />
 
-      {/* Navigation */}
-      <Navigation onNavigate={handleNavigate} />
+      {/* Custom Cursor */}
+      <CustomCursor />
 
-      {/* Page Content */}
-      <PageTransition isNavigating={isNavigating}>
-        <main>
-          {/* Hero Section */}
-          <HeroSection />
+      {/* Intro Overlay */}
+      <IntroOverlay onComplete={() => setIntroCompleted(true)} />
+
+      {/* Main Content - Fades in after intro */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: introCompleted ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        style={{ pointerEvents: introCompleted ? 'auto' : 'none' }}
+      >
+        {/* Navigation */}
+        <Navigation onNavigate={handleNavigate} />
+
+        {/* Page Content */}
+        <PageTransition isNavigating={isNavigating}>
+          <main>
+            {/* Hero Section */}
+            <HeroSection />
 
           {/* Toolbox Section (moved before projects for better flow) */}
           <ToolboxSection />
@@ -68,18 +81,19 @@ export default function App() {
               variants={footerVariants}
             >
               <p className="text-text-secondary text-sm mb-2 font-mono">
-                © {new Date().getFullYear()} Pratham Goyal
+                (c) {new Date().getFullYear()} Pratham Goyal
               </p>
               <p className="text-text-muted text-xs">
-                Built with React, Tailwind, Framer Motion • UE5 Gameplay Programmer Portfolio
+                Built with React, Tailwind, Framer Motion | UE5 Gameplay Programmer Portfolio
               </p>
               <p className="text-accent text-xs mt-2 font-mono">
-                v1.0 • Last updated: {new Date().toISOString().split('T')[0]}
+                v1.0 | Last updated: {new Date().toISOString().split('T')[0]}
               </p>
             </motion.div>
           </footer>
         </main>
       </PageTransition>
+      </motion.div>
     </div>
   )
 }

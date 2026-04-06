@@ -1,37 +1,50 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Consolas', 'monospace'],
       },
       colors: {
-        // UE5-style dark palette
+        // Monochromatic neutral palette
         background: '#0a0a0a',
-        surface: '#111111',
-        'surface-light': '#1a1a1a',
-        'text-primary': '#e0e0e0',
-        'text-secondary': '#a0a0a0',
-        'text-muted': '#666666',
+        surface: '#141414',
+        'surface-light': '#1e1e1e',
+        'surface-dark': '#0f0f0f',
+        'text-primary': '#fafafa',
+        'text-secondary': '#a1a1aa',
+        'text-muted': '#52525b',
         accent: {
-          DEFAULT: '#00d4ff',
-          light: '#00e5ff',
-          dark: '#00b8cc',
-          glow: 'rgba(0, 212, 255, 0.3)'
+          DEFAULT: '#ffffff',
+          subtle: 'rgba(255, 255, 255, 0.1)',
+          glow: 'rgba(255, 255, 255, 0.03)'
+        },
+        // Minimal gray scale
+        gray: {
+          50: '#fafafa',
+          100: '#e5e5e5',
+          200: '#d4d4d4',
+          300: '#a3a3a3',
+          400: '#737373',
+          500: '#52525b',
+          600: '#404040',
+          700: '#262626',
+          800: '#171717',
+          900: '#0a0a0a',
         }
       },
       boxShadow: {
-        'accent': '0 0 20px rgba(0, 212, 255, 0.3)',
-        'accent-lg': '0 0 30px rgba(0, 212, 255, 0.5)'
+        subtle: '0 1px 2px rgba(0, 0, 0, 0.3)',
+        glow: '0 0 15px rgba(255, 255, 255, 0.03)',
       },
       borderColor: {
-        'surface': '#2a2a2a',
-        'accent': '#00d4ff'
+        surface: '#262626',
+        subtle: 'rgba(255, 255, 255, 0.06)',
       }
     },
   },

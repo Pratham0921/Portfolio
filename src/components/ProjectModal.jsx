@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const tabs = [
@@ -146,14 +146,14 @@ export default function ProjectModal({ project, onClose }) {
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-accent font-mono text-lg">
-                            {expandedCode === index ? '▼' : '▶'}
+                            {expandedCode === index ? '' : ''}
                           </span>
                           <div>
                             <h4 className="text-white font-semibold font-mono">
                               {sample.fileName}
                             </h4>
                             <p className="text-xs text-text-secondary">
-                              {sample.language} • {sample.lines} lines
+                              {sample.language}  {sample.lines} lines
                             </p>
                           </div>
                         </div>
@@ -162,7 +162,7 @@ export default function ProjectModal({ project, onClose }) {
                             onClick={(e) => { e.stopPropagation(); /* toggle blueprint */ }}
                             className="text-xs text-accent hover:underline font-mono"
                           >
-                            ⇅ Show Blueprint
+                             Show Blueprint
                           </button>
                         )}
                       </button>
@@ -214,10 +214,10 @@ export default function ProjectModal({ project, onClose }) {
                         <h4 className="text-lg font-semibold text-white">{diagram.title}</h4>
                         <div className="flex gap-2">
                           <button className="px-3 py-1 text-xs text-accent border border-accent/30 rounded hover:bg-accent/10 transition-colors font-mono">
-                            ↓ SVG
+                             SVG
                           </button>
                           <button className="px-3 py-1 text-xs text-text-secondary border border-surface rounded hover:border-accent/30 hover:text-accent transition-colors font-mono">
-                            ↓ PNG
+                             PNG
                           </button>
                         </div>
                       </div>
@@ -316,7 +316,7 @@ export default function ProjectModal({ project, onClose }) {
                         <ul className="space-y-2">
                           {project.optimizations.map((opt, i) => (
                             <li key={i} className="flex items-start gap-3 text-text-secondary">
-                              <span className="text-accent mt-0.5">→</span>
+                              <span className="text-accent mt-0.5"></span>
                               <span>{opt}</span>
                             </li>
                           ))}
@@ -337,3 +337,4 @@ export default function ProjectModal({ project, onClose }) {
     </AnimatePresence>
   )
 }
+
