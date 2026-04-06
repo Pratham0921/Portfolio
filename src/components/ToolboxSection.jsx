@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import toolboxData from '../data/toolbox.json'
 
@@ -33,7 +33,7 @@ export default function ToolboxSection() {
   }
 
   return (
-    <section id="toolbox" className="py-24 relative bg-background overflow-hidden">
+    <section id="toolbox" className="py-24 relative overflow-hidden bg-transparent">
       <div className="content-width">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 section-header">Core Toolbox</h2>

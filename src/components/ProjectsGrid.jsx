@@ -9,7 +9,7 @@ export default function ProjectsGrid() {
   const projects = projectsData
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-background">
+    <section id="projects" className="py-24 relative overflow-hidden bg-transparent">
       <div className="content-width">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 section-header">Projects</h2>

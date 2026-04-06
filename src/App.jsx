@@ -9,9 +9,8 @@ import CaseStudies from './components/CaseStudies'
 import LearningTimeline from './components/LearningTimeline'
 import ContactForm from './components/ContactForm'
 import PageTransition from './components/PageTransition'
-import PixelSnow from './components/PixelSnow'
 import IntroOverlay from './components/IntroOverlay'
-import MinimalBackground from './components/MinimalBackground'
+import BitsBackground from './components/BitsBackground'
 
 
 export default function App() {
@@ -34,9 +33,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Pixel Snow Background per user request */}
-      <MinimalBackground />
-      <PixelSnow density={60} speed={0.5} />
+      {/* Subtle Monochrome Particle Network with Pixel Snow */}
+      <BitsBackground effectMode="mixed" density="high" colorScheme="monochrome" enableSnow={true} enableParticles={true} />
 
       {/* Intro Overlay */}
       <IntroOverlay onComplete={() => setIntroCompleted(true)} />

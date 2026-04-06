@@ -3,7 +3,7 @@ import personalInfo from '../data/personal-info.json'
 
 export default function BioSection() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-background">
+    <section id="about" className="py-24 relative overflow-hidden bg-transparent">
       <div className="content-width flex flex-col md:flex-row gap-12 items-center">
         {/* Profile Image Column */}
         <motion.div 

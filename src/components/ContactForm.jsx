@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function ContactForm() {
@@ -60,7 +60,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 relative bg-background overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden bg-transparent">
       <div className="content-width max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Let's Connect</h2>
